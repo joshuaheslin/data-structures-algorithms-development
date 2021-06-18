@@ -8,13 +8,15 @@ class Node {
 class LinkedList {
   static first;
   static last;
+  static count;
+
   constructor() {
     this.first = null;
     this.last = null;
+    this.count = 0;
   }
 
   addFirst(value) {
-    // create node
     const node = new Node(value)
 
     // this node is now first so the initial this.first pointer is moved to the front node
@@ -22,79 +24,61 @@ class LinkedList {
 
     // now the first pointer should point to the new node.
     this.first = node;
+
+    if (this.last === null) {
+      this.last = node;
+    }
+
+    this.count++;
   }
 
   addLast(value) {
     const node = new Node(value);
-    // console.log('node :>> ', node);
 
-    if (this.first === null) {
-      this.first = node;
-      return;
-    }
-
-    // no items return, add the node
-    if (this.last === null) {
-      // first item in array
+    if (this.first === null || this.last === null) {
       this.last = node;
-      // and for through each item only you see .next === null and update to .next = node;
-      if (this.first.next === null) {
-        this.first.next = node;
-        return;
-      }
-
-      let ref = this.first;
-      while (ref.next) {
-        ref = ref.next;
-        if (ref.next === null) {
-          ref.next = node;
-          break;
-        }
-      }
-      return;
+      this.first = node;
+    } else {
+      this.last.next = node
+      this.last = node;
     }
-
-    let list = this.first;
-    while (list.next) {
-      list = list.next;
-    }
-    list.next = node;
-    this.last = node;
+    
+    this.count++
   }
 
   deleteFirst() {
-    const ref = this.first;
-    if (ref.next) {
-      this.first = ref.next;
-      ref.next = null;
+    if (this.first === null) return;
+
+    const second = this.first.next;
+    //clear the ref between first and second
+    this.first.next = null;
+    this.first = second;
+    this.count--;
+  }
+
+  getPreviousNode(node) {
+    let ref = this.first;
+    while(ref.next) {
+      if (ref.next === node) {
+        return ref;
+      }
+      ref = ref.next;
     }
+
+    return null;
   }
 
   deleteLast() {
-    let ref = this.first;
-    // iterate to the entire list and update the second last pointer
-    while(ref.next) {
-      if (ref.next.next === null) {
-        // we are at the second last one.
-        ref.next = null;
-        this.last = ref;
-        break;
-      }
-      ref = ref.next;
-    }
+    const secondLast = this.getPreviousNode(this.last);
+
+    secondLast.next = null;
+    this.last = secondLast;
+    
+    this.count--;
   }
 
   contains(item) {
-    let ref = this.first;
-
-    while(ref.next) {
-      if (ref.value === item) {
-        return true;
-      }
-      ref = ref.next;
-    }
-    // check the last item;
-    return ref.value === item;
+    return this.indexOf(item) !== -1;
   }
 
   indexOf(item) {
@@ -108,37 +92,35 @@ class LinkedList {
       ref = ref.next;
       index++;
     }
-    // check the last item;
     if (ref.value === item) {
       return index;
     }
     return -1;
   }
 
-  print(list = null) {
+  print(list = null, sum = 0) {
     if (list) {
       list = list.next;
     } else {
       list = this.first
     }
-    console.log(list.value);
+    console.log(list.value, '', sum);
+    sum++
     if (list.next) {
-      this.print(list);
+      this.print(list, sum);
     }
   }
 }
 
 const list = new LinkedList();
-list.addLast(10);
-// list.print();
-// console.log('');
 list.addFirst(5);
-// list.addFirst(10);
+list.addFirst(10);
 list.addFirst(15);
 list.addLast(8);
 list.addLast(10);
-list.deleteFirst()
-list.deleteLast()
+list.addLast(12);
+list.deleteFirst();
+list.deleteLast();
 list.print();
 console.log('');
 console.log(list.contains(8))
