@@ -66,6 +66,7 @@ class LinkedList {
     const ref = this.first;
     if (ref.next) {
       this.first = ref.next;
+      ref.next = null;
     }
   }
 
