@@ -98,32 +98,97 @@ class LinkedList {
     return -1;
   }
 
-  print(list = null, sum = 0) {
+  print(list = null) {
     if (list) {
       list = list.next;
     } else {
       list = this.first
     }
-    console.log(list.value, '', sum);
-    sum++
+    console.log(list.value);
     if (list.next) {
-      this.print(list, sum);
+      this.print(list);
     }
+  }
+
+  size() {
+    console.log(this.count);
+    return this.count;
+  }
+
+  getNodeFromIndex(index) {
+    let ref = this.first;
+    let i = 0;
+    while(ref.next) {
+      if (i === index) {
+        return ref;
+      }
+      ref = ref.next;
+      i++;
+    }
+
+    // edge case when it's at the end
+    if (i === index) {
+      return ref;
+    }
+
+    return null;
+  }
+
+  // O(n^2)
+  reverse2() {
+    let newList = new LinkedList();
+    for (let i = this.count - 1; i >= 0; i--) {
+      // for each element
+      // the first one is last add to new array
+      const item = this.getNodeFromIndex(i);
+      if (i === this.count - 1) {
+        newList.addFirst(item.value);
+        continue;
+      }
+      newList.addLast(item.value);
+    }
+
+    // then update the list refs
+    this.first = newList.first;
+    this.last = newList.last;
+  }
+
+  // O(n)
+  reverse() {
+    // [10, 20, 30]
+
   }
 }
 
 const list = new LinkedList();
-list.addFirst(5);
-list.addFirst(10);
-list.addFirst(15);
-list.addLast(8);
+list.addFirst(1);
+list.addFirst(2);
+list.addFirst(3);
 list.addLast(10);
-list.addLast(12);
+list.addLast(20);
+list.addLast(30);
 list.deleteFirst();
 list.deleteLast();
 list.print();
 console.log('');
-console.log(list.contains(8))
-console.log(list.indexOf(8))
 
-console.log('list :>> ', list);
+list.reverse();
+list.addFirst(3);
+list.addLast(20);
+list.addLast(30);
+list.addLast(40);
+list.addFirst(4);
+list.addFirst(5);
+// list.deleteFirst();
+// list.deleteLast();
+// add last is borken
+list.print();
+console.log('');
+// list.reverse();
+// list.print();
+// console.log('');
+// console.log(list.contains(8))
+// console.log(list.indexOf(8))
+// list.size();
+
+// console.log('list :>> ', list);
