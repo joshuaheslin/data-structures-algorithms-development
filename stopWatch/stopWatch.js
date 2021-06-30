@@ -1,6 +1,5 @@
 
-/* Constructor Function */
-
+/** Constructor Function **/
 /* Build a simple stopwatch */
 
 function StopWatch() {
