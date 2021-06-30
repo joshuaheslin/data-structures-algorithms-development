@@ -156,6 +156,27 @@ class LinkedList {
   // O(n)
   reverse() {
     // [10, 20, 30]
+    // p   c   n
+
+    // get ref for 1st element
+    let previous = this.first;
+
+    // get ref for 2nd element
+    let current = this.first.next;
+
+    
+    while(previous.next) {
+      // get ref for 3rd element
+      const next = current.next;
+      
+      // reverse the link
+      current.next = previous;
+      previous = current;
+      current = next;
+
+    }
+
+    this.first = previous;
 
   }
 }
@@ -173,12 +194,12 @@ list.print();
 console.log('');
 
 list.reverse();
-list.addFirst(3);
-list.addLast(20);
-list.addLast(30);
-list.addLast(40);
-list.addFirst(4);
-list.addFirst(5);
+// list.addFirst(3);
+// list.addLast(20);
+// list.addLast(30);
+// list.addLast(40);
+// list.addFirst(4);
+// list.addFirst(5);
 // list.deleteFirst();
 // list.deleteLast();
 // add last is borken
