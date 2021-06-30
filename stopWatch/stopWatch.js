@@ -4,16 +4,14 @@
 /* Build a simple stopwatch */
 
 function StopWatch() {
-  let startTime, endTime, running, reset = 0;
+  let startTime, endTime, running = 0;
 
   this.start = () => {
-    if (running) {
-      throw new Error('Watch already running!')
-    }
-
+    if (running) throw new Error('Watch already running!')
     startTime = new Date();
     running = 1;
   }
+
   this.stop = () => {
     if (!running) throw new Error('Watch not running please start it first!')
     endTime = new Date() - startTime;
