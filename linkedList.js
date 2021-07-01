@@ -50,7 +50,7 @@ class LinkedList {
     if (this.first === null) return;
 
     const second = this.first.next;
-    //clear the ref between first and second
+    // clear the ref between first and second
     this.first.next = null;
     this.first = second;
     this.count--;
@@ -155,29 +155,64 @@ class LinkedList {
 
   // O(n)
   reverse() {
-    // [10, 20, 30]
-    // p   c   n
+    if (!this.first) return;
 
-    // get ref for 1st element
+    // get ref for 1st, 2nd element
     let previous = this.first;
-
-    // get ref for 2nd element
     let current = this.first.next;
 
-    
-    while(previous.next) {
-      // get ref for 3rd element
+    while(current) {
       const next = current.next;
       
       // reverse the link
       current.next = previous;
+      
+      // reset the pointers
       previous = current;
       current = next;
-
     }
 
-    this.first = previous;
+    // set the last pointer
+    this.last = this.first;
+    this.last.next = null;
 
+    // set the first pointer to the last element
+    this.first = previous;
+  }
+
+  getKthFromStart(k) {
+    if (k < 1) throw new Error('Boundary constraint: k > 0');
+
+    let target;
+    let current = this.first.next;
+    let number = 0;
+    while (current) {
+      if (number === k - 1) {
+        target = current;
+        return;
+      }
+      current = current.next;
+      number++;
+    }
+    return target.value;
+  }
+
+  getKthFromEnd(k) {
+    if (k < 0 || k > this.count - 1) throw new Error('Boundary constraint: 0 > k > count-1');
+
+    let current = this.first;
+    let target = this.first;
+
+    let number = 0;
+    while (current.next) {
+      if (number >= k) {
+        target = target.next;
+      }
+      current = current.next;
+      number++;
+    }
+
+    return target.value;
   }
 }
 
@@ -188,12 +223,18 @@ list.addFirst(3);
 list.addLast(10);
 list.addLast(20);
 list.addLast(30);
-list.deleteFirst();
-list.deleteLast();
+list.addLast(40);
+// list.deleteFirst();
+// list.deleteLast();
 list.print();
 console.log('');
 
-list.reverse();
+// list.reverse();
+// console.log('');
+
+// console.log(list.getKthFromEnd(2))
+// console.log('');
+
 // list.addFirst(3);
 // list.addLast(20);
 // list.addLast(30);
@@ -202,9 +243,8 @@ list.reverse();
 // list.addFirst(5);
 // list.deleteFirst();
 // list.deleteLast();
-// add last is borken
-list.print();
-console.log('');
+// list.print();
+// console.log('');
 // list.reverse();
 // list.print();
 // console.log('');
