@@ -9,7 +9,7 @@
       "type": "node",
       "request": "launch",
       "name": "Launch Program",
-      "program": "${workspaceFolder}/linkedList.js",
+      "program": "${workspaceFolder}/StackLinkedList.js",
       "skipFiles": [
         "<node_internals>/**"
       ]
