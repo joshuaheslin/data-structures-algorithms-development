@@ -198,7 +198,7 @@ class LinkedList {
   }
 
   getKthFromEnd(k) {
-    if (k < 0 || k > this.count - 1) throw new Error('Boundary constraint: 0 > k > count-1');
+    if (k < 0 || k > this.count - 1) throw new Error('Boundary constraint: 0 < k > count-1');
 
     let current = this.first;
     let target = this.first;
