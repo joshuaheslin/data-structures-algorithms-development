@@ -40,18 +40,20 @@ class StackArray {
   }
 }
 
-const stack = new StackArray();
-stack.push(1);
-stack.push(2);
-const p = stack.peek();
-console.log('peek :>> ', p);
-stack.push(3);
-stack.pop();
-let is = stack.isEmpty();
-stack.pop();
-stack.pop();
-stack.pop();
-stack.print();
-is = stack.isEmpty();
-console.log('stack :>> ', stack);
-console.log('isEmpty :>> ', is);
+// const stack = new StackArray();
+// stack.push(1);
+// stack.push(2);
+// const p = stack.peek();
+// console.log('peek :>> ', p);
+// stack.push(3);
+// stack.pop();
+// let is = stack.isEmpty();
+// stack.pop();
+// stack.pop();
+// stack.pop();
+// stack.print();
+// is = stack.isEmpty();
+// console.log('stack :>> ', stack);
+// console.log('isEmpty :>> ', is);
+
+module.exports = StackArray;

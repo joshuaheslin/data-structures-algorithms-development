@@ -1,4 +1,4 @@
-class StackExcerses {
+class StackExercises {
   stack = [];
 
   reverse(string) {
@@ -31,7 +31,7 @@ class StackExcerses {
   }
 }
 
-const stack = new StackExcerses();
+const stack = new StackExercises();
 
 // * Check if string is balanced * //
 const result = stack.isBalanced('({1} + [2])');

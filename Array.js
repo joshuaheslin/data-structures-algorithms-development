@@ -43,17 +43,19 @@ class MyArray {
   }
 }
 
-const array = new MyArray(3);
-array.print();
-array.insert(10);
-array.insert(20);
-array.insert(30);
-array.insert(40);
-array.removeAt(2);
-array.insert(50);
-array.insert(50);
-array.print();
-const i = array.indexOf(30);
-console.log('i :>> ', i);
-console.log('array :>> ', array.array);
+// const array = new MyArray(3);
+// array.print();
+// array.insert(10);
+// array.insert(20);
+// array.insert(30);
+// array.insert(40);
+// array.removeAt(2);
+// array.insert(50);
+// array.insert(50);
+// array.print();
+// const i = array.indexOf(30);
+// console.log('i :>> ', i);
+// console.log('array :>> ', array.array);
 // array.removeAt();
+
+module.exports = MyArray;
