@@ -23,22 +23,26 @@ class Tree {
   }
 
   insert(value) {
+    const node = new Node(value);
+
     if (!this.root) {
-      this.root = new Node(value);
+      this.root = node;
+      return;
     }
+
     let current = this.root;
 
     while(current.value !== value) {
       if (value < current.value) {
         if (!current.leftChild) {
-          current.leftChild = new Node(value);
+          current.leftChild = node;
           return;
         }
         current = current.leftChild;
       }
       if (value > current.value) {
         if (!current.rightChild) {
-          current.rightChild = new Node(value);
+          current.rightChild = node;
           return;
         }
         current = current.rightChild;
