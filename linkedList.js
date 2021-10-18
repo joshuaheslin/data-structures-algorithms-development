@@ -216,6 +216,8 @@ class LinkedList {
   }
 }
 
+module.exports = LinkedList;
+
 const list = new LinkedList();
 list.addFirst(1);
 list.addFirst(2);
@@ -226,8 +228,8 @@ list.addLast(30);
 list.addLast(40);
 // list.deleteFirst();
 // list.deleteLast();
-list.print();
-console.log('');
+// list.print();
+// console.log('');
 
 // list.reverse();
 // console.log('');
