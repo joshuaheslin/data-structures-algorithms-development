@@ -55,6 +55,19 @@ class Tree {
     console.log(root.value);
   }
 
+  traverseLevelOrderBase() {
+    return this.traverseLevelOrder(this.root);
+  }
+
+  traverseLevelOrder(root) {
+    for (let i = 0; i <= this.height(root); i++) {
+      const items = this.printAtDistanceBase(i);
+      for (let i = 0; i < items.length; i++) {
+        console.log(items[i]);
+      }
+    }
+  }
+
   heightBase() {
     if (!this.root) return -1;
     return this.height(this.root);
@@ -201,7 +214,8 @@ tree.insert(5)
 tree.insert(61)
 
 // console.log(tree.validateBase());
-console.log(tree.printAtDistanceBase(1))
+console.log(tree.traverseLevelOrderBase());
+// console.log(tree.printAtDistanceBase(1))
 
 // const tree2 = new Tree();
 // tree2.insert(20)
