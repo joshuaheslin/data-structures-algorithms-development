@@ -8,7 +8,7 @@
       "type": "node",
       "request": "launch",
       "name": "Launch Program",
-      "program": "${workspaceFolder}/Part2/BinaryTree.js",
+      "program": "${workspaceFolder}/Part2/Numbers.js",
       "skipFiles": [
         "<node_internals>/**"
       ]

@@ -15,11 +15,51 @@ const sort = (array) => {
       } else {
         length += 1;
       }
-      // console.log(length, array);
     }
   }
 
   console.log(array);
 }
 
-sort(arr);
+// sort(arr);
+
+const selectionSort = (array) => {
+  for (let i = 0; i < array.length; i++) {
+    let minIndex = i;
+    for (let j = i; j < array.length; j++) {
+      if (array[j] < array[minIndex]) {
+        minIndex = j;
+      }
+    }
+    const temp = array[i];
+    array[i] = array[minIndex]
+    array[minIndex] = temp;
+  }
+
+  console.log(array);
+}
+
+// selectionSort(arr);
+
+const insertionSort = (array) => {
+  for (let i = 1; i < array.length; i++) {
+    let current = array[i]
+    for (let j = i - 1; j > 0; j--) {
+      if (array[j] > current) {
+        array[j + 1] = array[j]
+        // array[j] = current
+        // array[j] = current;
+        array[j + 1] = current
+      }
+    }
+  }
+
+  console.log(array);
+}
+
+insertionSort(arr);
+
+// Merge sort
+// allocate additional space
+
+
